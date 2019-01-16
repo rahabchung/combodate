@@ -390,6 +390,9 @@
                         delta = {value: optValue, distance: distance};
                     }
                 });
+                if (that.options.roundUp == true & Number(delta.value) < value) {
+                    delta.value = Number(delta.value) + that.options.minuteStep;
+                }
                 return delta.value;
             }
 
@@ -518,7 +521,8 @@
         errorClass: null,
         customClass: '',
         roundTime: true, // whether to round minutes and seconds if step > 1
-        smartDays: false // whether days in combo depend on selected month: 31, 30, 28
+        smartDays: false, // whether days in combo depend on selected month: 31, 30, 28
+        roundUp: false // if ture, roud up time insead of getting nearest time when minuteStep or secondStep > 1
     };
 
 }(window.jQuery));
